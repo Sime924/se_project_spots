@@ -1,0 +1,12 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  color: rgb(33, 33, 33, 0.7);
+}
+
+.footer__title {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  margin: 60px 0;
+}
