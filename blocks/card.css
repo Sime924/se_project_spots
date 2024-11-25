@@ -13,9 +13,10 @@
 .card__title {
   margin: 0;
   padding: 12px 0 0;
+  font-family: "Poppins", "Arial", Helvetica, sans-serif;
   font-weight: 500;
   font-size: 20px;
-  max-width: 235px;
+  max-width: 353px;
   line-height: 24px;
   color: #212121;
   text-overflow: ellipsis;
@@ -42,11 +43,24 @@
 
 .card__like-btn:hover {
   opacity: 1;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 627px) {
+  .card {
+    width: 288px;
+  }
+
   .card__image {
     height: 288px;
+  }
+
+  .card__list {
+    gap: 20px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0 20px;
   }
 
   .card__title {

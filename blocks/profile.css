@@ -18,6 +18,7 @@
 }
 .profile__name {
   margin: 0 0 12px;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 32px;
   line-height: 1;
@@ -32,6 +33,7 @@
 
 .profile__description {
   margin: 0;
+  font-family: "Poppins", "Arial", Helvetica, sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 1;
@@ -50,10 +52,13 @@
 
 .profile__edit-btn {
   margin-top: auto;
+  padding-left: 0;
   display: flex;
   align-items: center;
+  justify-content: center;
   background-color: transparent;
   border: none;
+  font-family: "Poppins", "Arial", Helvetica, sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 1;
@@ -66,6 +71,7 @@
 
 .profile__edit-btn:hover {
   opacity: 1;
+  cursor: pointer;
 }
 
 .profile__plus-icon {
@@ -83,6 +89,7 @@
   border: none;
   background-color: rgb(33, 33, 33);
   color: #fcf5e5;
+  font-family: "Poppins", "Arial", Helvitica, sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 1;
@@ -94,6 +101,7 @@
   border-radius: 8px;
   width: 152px;
   height: 52px;
+  cursor: pointer;
 }
 @media screen and (max-width: 627px) {
   .profile {
