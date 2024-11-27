@@ -12,7 +12,6 @@
 
 .card__title {
   margin: 0;
-  padding: 12px 0 0;
   font-family: "Poppins", "Arial", Helvetica, sans-serif;
   font-weight: 500;
   font-size: 20px;
@@ -28,6 +27,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 12px 0;
 }
 
 .card__like-btn {
@@ -55,19 +55,9 @@
     height: 288px;
   }
 
-  .card__list {
-    gap: 20px;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    padding: 0 0 20px;
-  }
-
   .card__title {
     font-size: 16px;
-    font-weight: 500;
     line-height: 1;
     max-width: 235px;
-    height: 16px;
   }
 }

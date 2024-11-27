@@ -11,9 +11,3 @@
   line-height: 16px;
   margin: 60px 0;
 }
-
-@media screen and (max-width: 627px) {
-  .footer__description {
-    margin: 60px 0;
-  }
-}
