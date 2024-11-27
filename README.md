@@ -27,3 +27,9 @@ Good luck and have fun!
 This webpage is deployed to GitHub Pages link below
 
 [Deployment Link:](https://sime924.github.io/se_project_spots/)
+
+### Explanation video
+
+The first iteration of this project is explained using the link below
+
+[\[Explanation link\]](https://drive.google.com/file/d/1vYIu87ukY63hKX_rE-RRd3kJmfPG8Y9y/view?usp=sharing)
