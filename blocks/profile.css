@@ -78,7 +78,7 @@
   align-self: center;
 }
 
-.profile__add-btn {
+.profile__new-post-btn {
   margin-left: auto;
   width: 149px;
   height: 52px;
@@ -93,7 +93,7 @@
   align-self: flex-end;
   transition-duration: 0.3s;
 }
-.profile__add-btn:hover {
+.profile__new-post-btn:hover {
   opacity: 0.8;
   cursor: pointer;
 }
