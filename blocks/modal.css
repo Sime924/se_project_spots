@@ -125,11 +125,27 @@
 .modal__input {
   padding: 16px 12px;
   border-radius: 8px;
-  border-color: rgb (33, 33, 33, 0.4);
+  border-color: rgb(33, 33, 33, 0.4);
 }
 
 .modal__input:hover {
   cursor: pointer;
+}
+
+.modal__error {
+  display: block;
+  font-family: "Poppins", "Arial", Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 500px;
+  line-height: 17.6px;
+  color: rgb(255, 0, 0, 0.7);
+  width: 630px;
+  height: 18px;
+}
+
+.modal__input_type_error {
+  border-color: rgba(255, 0, 0, 0.7);
+  outline-color: 1px solid rgba(255, 0, 0, 1);
 }
 
 .modal__submit-btn {
@@ -146,6 +162,13 @@
   opacity: 0.8;
 }
 
+.modal__submit-btn_disabled {
+  background-color: white;
+  color: #000;
+  border-color: #000;
+  opacity: 0.2;
+}
+
 @media screen and (max-width: 627px) {
   .modal {
     padding: 0 10px;
@@ -155,7 +178,6 @@
     padding: 12px;
     border-radius: 8px;
     max-width: 300px;
-    max-height: 336px;
   }
 
   .modal__content {
@@ -193,6 +215,21 @@
   .modal__input {
     border-color: rgb(33, 33, 33, 0.4);
   }
+
+  .modal__error {
+    width: 276px;
+    height: unset;
+    padding: 8px 0 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 17.6px;
+  }
+
+  .modal__input_type_error {
+    border-color: rgba(255, 0, 0, 0.7);
+    outline-color: 1px solid rgba(255, 0, 0, 1);
+  }
+
   .modal__submit-btn {
     width: 100%;
     font-family: "Poppins", "Arial", Helvetica, sans-serif;
