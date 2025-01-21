@@ -163,10 +163,9 @@
 }
 
 .modal__submit-btn_disabled {
-  background-color: lightgrey;
-  color: #000;
+  color: #fcf5e5;
   border-color: #000;
-  opacity: 0.2;
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 627px) {
