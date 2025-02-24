@@ -1,3 +1,5 @@
+import { enableValidation, settings, resetValidation } from "./validation.js";
+
 const initialCards = [
   {
     name: "Mountain house",
@@ -168,5 +170,7 @@ initialCards.forEach((item) => {
   cardsList.prepend(cardEl);
 });
 
+enableValidation(settings);
+resetValidation();
 //pass settings object to validation functions that are called
 //in this file
