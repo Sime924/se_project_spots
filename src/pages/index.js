@@ -1,4 +1,4 @@
-import Api from "../scripts/Api.js";
+import Api from "../utils/Api.js";
 import "./index.css";
 import {
   enableValidation,
@@ -45,12 +45,15 @@ const api = new Api({
   },
 });
 
-api.getInitialCards().then((cards) => {
-  cards.forEach((item) => {
-    const cardEl = getCardElement(item);
-    cardsList.prepend(cardEl);
-  });
-});
+api
+  .getInitialCards()
+  .then((cards) => {
+    cards.forEach((item) => {
+      const cardEl = getCardElement(item);
+      cardsList.prepend(cardEl);
+    });
+  })
+  .catch(console.error);
 
 const profileEditButton = document.querySelector(".profile__edit-btn");
 const cardModalButton = document.querySelector(".profile__new-post-btn");
@@ -185,11 +188,6 @@ previewModalCloseBtn.addEventListener("click", () => {
 
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardForm.addEventListener("submit", handleAddCardSubmit);
-
-initialCards.forEach((item) => {
-  const cardEl = getCardElement(item);
-  cardsList.prepend(cardEl);
-});
 
 enableValidation(settings);
 resetValidation();
