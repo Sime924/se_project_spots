@@ -46,8 +46,9 @@ const api = new Api({
 });
 
 api
-  .getInitialCards()
-  .then((cards) => {
+  .getAppInfo()
+  .then(([cards]) => {
+    console.log(cards);
     cards.forEach((item) => {
       const cardEl = getCardElement(item);
       cardsList.prepend(cardEl);
