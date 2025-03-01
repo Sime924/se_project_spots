@@ -172,7 +172,7 @@ function handleAvatarSubmit(evt) {
   // prevent behavior
   console.log(avatarInput.Value);
   api.editAvatarInfo().then((data) => {
-    console.log(data);
+    console.log(data.avatar);
   });
 }
 
