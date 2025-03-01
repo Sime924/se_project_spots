@@ -45,6 +45,7 @@ const api = new Api({
   },
 });
 
+//destructure second item in thecallback of the .then( )
 api
   .getAppInfo()
   .then(([cards]) => {
@@ -53,11 +54,16 @@ api
       const cardEl = getCardElement(item);
       cardsList.prepend(cardEl);
     });
+
+    //handle the user's information
+    //set the src of the avatar image
+    // set the textContent of both the text elements
   })
   .catch(console.error);
 
 const profileEditButton = document.querySelector(".profile__edit-btn");
 const cardModalButton = document.querySelector(".profile__new-post-btn");
+const avatarModalButton = document.querySelector(".profile__avatar-btn");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 
@@ -84,6 +90,13 @@ const previewModalCaptionEL = previewModal.querySelector(".modal__caption");
 const previewModalCloseBtn = previewModal.querySelector(
   ".modal__close-btn_type_preview"
 );
+
+//Avatar form elements
+const avatarModal = document.querySelector("#avatar-modal");
+const avatarForm = avatarModal.querySelector(".modal__form");
+const avatarSubmitBtn = avatarModal.querySelector(".modal__submit-btn");
+const avatarModalCloseBtn = avatarModal.querySelector(".modal__close-btn");
+const avatarInput = avatarModal.querySelector("#profile-avatar-input");
 
 function getCardElement(data) {
   const cardElement = cardTemplate.content
@@ -131,9 +144,18 @@ function closeModal(modal) {
 
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
-  profileName.textContent = editModalNameInput.value;
-  profileDescription.textContent = editModalDescriptionInput.value;
-  closeModal(editModal);
+  api
+    .editUserInfo({
+      name: editModalNameInput.value,
+      about: editModalDescriptionInput.value,
+    })
+    .then((data) => {
+      //TODO-use data argument instead of the input values
+      profileName.textContent = editModalNameInput.value;
+      profileDescription.textContent = editModalDescriptionInput.value;
+      closeModal(editModal);
+    })
+    .catch(console.error);
 }
 
 function handleAddCardSubmit(evt) {
@@ -144,6 +166,14 @@ function handleAddCardSubmit(evt) {
   closeModal(cardModal);
   evt.target.reset();
   disableButton(cardSubmitBtn, settings);
+}
+// Todo - Finish avatar submission Handler
+function handleAvatarSubmit(evt) {
+  // prevent behavior
+  console.log(avatarInput.Value);
+  api.editAvatarInfo().then((data) => {
+    console.log(data);
+  });
 }
 
 profileEditButton.addEventListener("click", () => {
@@ -186,6 +216,15 @@ cardModalCloseBtn.addEventListener("click", () => {
 previewModalCloseBtn.addEventListener("click", () => {
   closeModal(previewModal);
 });
+
+avatarModalButton.addEventListener("click", () => {
+  openModal(avatarModal);
+});
+
+avatarModalCloseBtn.addEventListener("click", () => {
+  closeModal(avatarModal);
+});
+avatarForm.addEventListener("submit", handleAvatarSubmit);
 
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardForm.addEventListener("submit", handleAddCardSubmit);
