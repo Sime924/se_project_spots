@@ -48,11 +48,14 @@ const api = new Api({
 //destructure second item in thecallback of the .then( )
 api
   .getAppInfo()
-  .then(([cards]) => {
-    console.log(cards);
+  .then(([userData, cards]) => {
+    profileName.textContent = userData.name;
+    profileDescription.textContent = userData.about;
+    avatarImage.src = userData.avatar;
+
     cards.forEach((item) => {
       const cardEl = getCardElement(item);
-      cardsList.prepend(cardEl);
+      cardsList.append(cardEl);
     });
 
     //handle the user's information
@@ -93,6 +96,7 @@ const previewModalCloseBtn = previewModal.querySelector(
 
 //Avatar form elements
 const avatarModal = document.querySelector("#avatar-modal");
+const avatarImage = document.querySelector(".profile__avatar");
 const avatarForm = avatarModal.querySelector(".modal__form");
 const avatarSubmitBtn = avatarModal.querySelector(".modal__submit-btn");
 const avatarModalCloseBtn = avatarModal.querySelector(".modal__close-btn");

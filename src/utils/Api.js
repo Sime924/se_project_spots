@@ -5,11 +5,19 @@ class Api {
     // constructor body
   }
 
-  //create another method like getUserInfo (different baseUrl)
+  getUserInfo() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      headers: this._headers,
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  }
 
   getAppInfo() {
-    // call getUserInfo in this array
-    return Promise.all([this.getInitialCards()]);
+    return Promise.all([this.getUserInfo(), this.getInitialCards()]);
   }
 
   getInitialCards() {
