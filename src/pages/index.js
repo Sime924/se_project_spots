@@ -98,6 +98,8 @@ const avatarSubmitBtn = avatarModal.querySelector(".modal__submit-btn");
 const avatarModalCloseBtn = avatarModal.querySelector(".modal__close-btn");
 const avatarInput = avatarModal.querySelector("#profile-avatar-input");
 
+const deleteModal = document.querySelector("#delete-modal");
+
 function getCardElement(data) {
   const cardElement = cardTemplate.content
     .querySelector(".card")
@@ -123,7 +125,7 @@ function getCardElement(data) {
     previewModalCaptionEL.textContent = data.name;
   });
 
-  cardDeleteBtn.addEventListener("click", (evt) => {
+  cardDeleteBtn.addEventListener("click", (handleDeleteCard) => {
     cardElement.remove();
   });
 
@@ -169,11 +171,10 @@ function handleAddCardSubmit(evt) {
 }
 // Todo - Finish avatar submission Handler
 function handleAvatarSubmit(evt) {
-  // prevent behavior
+  evt.preventDefault();
   console.log(avatarInput.Value);
-  api.editAvatarInfo().then((data) => {
-    console.log(data.avatar);
-  });
+  api.editAvatarInfo().then((data) => {});
+  console.log(data.avatar);
 }
 
 profileEditButton.addEventListener("click", () => {
