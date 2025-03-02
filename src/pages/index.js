@@ -100,7 +100,7 @@ const avatarInput = avatarModal.querySelector("#profile-avatar-input");
 
 const deleteModal = document.querySelector("#delete-modal");
 const deleteForm = deleteModal.querySelector(".modal__form");
-const deleteModalCancelBtn = deleteModal.querySelector(".modal__submit-btn");
+const deleteModalCancelBtn = deleteModal.querySelector(".modal__cancel-btn");
 const deleteModalCloseBtn = deleteModal.querySelector(".modal__close-btn");
 
 function getCardElement(data) {
@@ -126,10 +126,6 @@ function getCardElement(data) {
     previewModalImageEl.src = data.link;
     previewModalImageEl.alt = data.name;
     previewModalCaptionEL.textContent = data.name;
-  });
-
-  cardDeleteBtn.addEventListener("click", (evt) => {
-    cardElement.remove();
   });
 
   cardDeleteBtn.addEventListener("click", () => {

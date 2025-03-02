@@ -168,6 +168,15 @@
   opacity: 0.5;
 }
 
+.modal__cancel-btn {
+  width: 156px;
+  height: 52px;
+  padding: 18px 0;
+  border-radius: 8px;
+  color: #fcf5e5;
+  background-color: #212121;
+}
+
 @media screen and (max-width: 627px) {
   .modal {
     padding: 0 10px;
