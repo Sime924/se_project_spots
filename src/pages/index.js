@@ -99,6 +99,9 @@ const avatarModalCloseBtn = avatarModal.querySelector(".modal__close-btn");
 const avatarInput = avatarModal.querySelector("#profile-avatar-input");
 
 const deleteModal = document.querySelector("#delete-modal");
+const deleteForm = deleteModal.querySelector(".modal__form");
+const deleteModalCancelBtn = deleteModal.querySelector(".modal__submit-btn");
+const deleteModalCloseBtn = deleteModal.querySelector(".modal__close-btn");
 
 function getCardElement(data) {
   const cardElement = cardTemplate.content
@@ -125,8 +128,14 @@ function getCardElement(data) {
     previewModalCaptionEL.textContent = data.name;
   });
 
-  cardDeleteBtn.addEventListener("click", (handleDeleteCard) => {
+  cardDeleteBtn.addEventListener("click", (evt) => {
     cardElement.remove();
+  });
+
+  cardDeleteBtn.addEventListener("click", () => {
+    openModal(deleteModal);
+    // also set the value of the selectedCard
+    // and the selectedCardId
   });
 
   return cardElement;
@@ -152,9 +161,8 @@ function handleEditFormSubmit(evt) {
       about: editModalDescriptionInput.value,
     })
     .then((data) => {
-      //TODO-use data argument instead of the input values
-      profileName.textContent = editModalNameInput.value;
-      profileDescription.textContent = editModalDescriptionInput.value;
+      profileName.textContent = data.name;
+      profileDescription.textContent = data.about;
       closeModal(editModal);
     })
     .catch(console.error);
@@ -172,9 +180,18 @@ function handleAddCardSubmit(evt) {
 // Todo - Finish avatar submission Handler
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
-  console.log(avatarInput.Value);
-  api.editAvatarInfo().then((data) => {});
-  console.log(data.avatar);
+  const avatarUrl = avatarInput.value;
+  api
+    .editAvatarInfo({ avatar: avatarUrl })
+    .then((data) => {
+      avatarImage.src = data.avatar;
+      closeModal(avatarModal);
+    })
+    .catch(console.error);
+}
+
+function handleDeleteCard(evt) {
+  openModal(deleteModal);
 }
 
 profileEditButton.addEventListener("click", () => {
@@ -224,6 +241,14 @@ avatarModalButton.addEventListener("click", () => {
 
 avatarModalCloseBtn.addEventListener("click", () => {
   closeModal(avatarModal);
+});
+
+deleteModalCloseBtn.addEventListener("click", () => {
+  closeModal(deleteModal);
+});
+
+deleteModalCancelBtn.addEventListener("click", () => {
+  closeModal(deleteModal);
 });
 avatarForm.addEventListener("submit", handleAvatarSubmit);
 
