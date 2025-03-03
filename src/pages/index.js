@@ -84,6 +84,8 @@ const cardModalCloseBtn = cardModal.querySelector(".modal__close-btn");
 const cardNameInput = cardModal.querySelector("#add-card-name-input");
 const cardLinkInput = cardModal.querySelector("#add-card-link-input");
 
+let selectedCard, selectedCardId;
+
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
 const cardImage = document.querySelector(".card__image");
@@ -132,7 +134,10 @@ function getCardElement(data) {
     previewModalCaptionEL.textContent = data.name;
   });
 
-  cardDeleteBtn.addEventListener("click", () => {
+  cardDeleteBtn.addEventListener("click", (evt) => {
+    // selectedCard = evt.target.closest(".card");
+    // selectedCardId = data.id;
+
     openModal(deleteModal);
     // also set the value of the selectedCard
     // and the selectedCardId
@@ -170,12 +175,23 @@ function handleEditFormSubmit(evt) {
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
-  const inputValues = { name: cardNameInput.value, link: cardLinkInput.value };
-  const cardEl = getCardElement(inputValues);
-  cardsList.prepend(cardEl);
-  closeModal(cardModal);
-  evt.target.reset();
+  const inputValues = {
+    name: cardNameInput.value.trim(),
+    link: cardLinkInput.value.trim(),
+  };
+
   disableButton(cardSubmitBtn, settings);
+
+  api
+    .addCard(inputValues)
+    .then((newCardData) => {
+      const cardEl = getCardElement(newCardData);
+      cardsList.prepend(cardEl);
+      closeModal(cardModal);
+      evt.target.reset();
+      disableButton(cardSubmitBtn, settings);
+    })
+    .catch(console.error);
 }
 // Todo - Finish avatar submission Handler
 function handleAvatarSubmit(evt) {
@@ -190,7 +206,26 @@ function handleAvatarSubmit(evt) {
     .catch(console.error);
 }
 
-function handleDeleteCard(evt) {
+function handleDeleteSubmit(evt) {
+  evt.preventDefault();
+  api
+    .deleteCard(selectedCardId)
+    .then(() => {
+      if (selectedCard) {
+        selectedCard.remove();
+        selectedCard = null;
+        selectedCardId = null;
+      }
+      closeModal(deleteModal);
+      //todo remove the card from the DOM and close the modal
+    })
+    .catch(console.error);
+}
+
+function handleDeleteCard(cardElement, cardId) {
+  selectedCard = cardElement;
+  selectedCardId = cardId;
+
   openModal(deleteModal);
 }
 
@@ -251,6 +286,8 @@ deleteModalCancelBtn.addEventListener("click", () => {
   closeModal(deleteModal);
 });
 avatarForm.addEventListener("submit", handleAvatarSubmit);
+
+deleteForm.addEventListener("submit", handleDeleteSubmit);
 
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardForm.addEventListener("submit", handleAddCardSubmit);
