@@ -109,6 +109,20 @@ const deleteForm = deleteModal.querySelector(".modal__form");
 const deleteModalCancelBtn = deleteModal.querySelector(".modal__cancel-btn");
 const deleteModalCloseBtn = deleteModal.querySelector(".modal__close-btn");
 
+function handleLike(evt, id) {
+  const likeButton = evt.target;
+  const isLiked = likeButton.classList.contains("card__like-btn_liked");
+
+  api
+    .changeLikeStatus(id, !isLiked)
+    .then(() => {
+      likeButton.classList.toggle("card__like-btn_liked");
+    })
+    .catch((error) => {
+      console.error("Error updating like status", error);
+    });
+}
+
 function getCardElement(data) {
   const cardElement = cardTemplate.content
     .querySelector(".card")
@@ -119,13 +133,17 @@ function getCardElement(data) {
   const cardLikeBtn = cardElement.querySelector(".card__like-btn");
   const cardDeleteBtn = cardElement.querySelector(".card__delete-btn");
 
+  // Todo- if the card is liked set the active class on the card
+
   cardNameEl.textContent = data.name;
   cardImageEl.src = data.link;
   cardImageEl.alt = data.name;
 
-  cardLikeBtn.addEventListener("click", () => {
-    cardLikeBtn.classList.toggle("card__like-btn_liked");
-  });
+  if (data.likes && data.likes.length > 0) {
+    cardLikeBtn.classList.add("card__like-btn_liked");
+  }
+
+  cardLikeBtn.addEventListener("click", (evt) => handleLike(evt, data._id));
 
   cardImageEl.addEventListener("click", () => {
     openModal(previewModal);
@@ -135,12 +153,7 @@ function getCardElement(data) {
   });
 
   cardDeleteBtn.addEventListener("click", (evt) => {
-    // selectedCard = evt.target.closest(".card");
-    // selectedCardId = data.id;
-
-    openModal(deleteModal);
-    // also set the value of the selectedCard
-    // and the selectedCardId
+    handleDeleteCard(cardElement, data._id);
   });
 
   return cardElement;
@@ -217,7 +230,6 @@ function handleDeleteSubmit(evt) {
         selectedCardId = null;
       }
       closeModal(deleteModal);
-      //todo remove the card from the DOM and close the modal
     })
     .catch(console.error);
 }
