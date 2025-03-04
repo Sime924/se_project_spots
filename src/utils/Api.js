@@ -32,7 +32,7 @@ class Api {
   }
 
   addCard({ name, link }) {
-    return fetch(`${this._baseUrl}/users/cards`, {
+    return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
       // Send the data in the body as a JSON string.
@@ -65,7 +65,7 @@ class Api {
     });
   }
 
-  editAvatarInfo(avatar) {
+  editAvatarInfo({ avatar }) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,

@@ -1,3 +1,4 @@
+import { setButtonText } from "../utils/helpers.js";
 import Api from "../utils/Api.js";
 import "./index.css";
 import {
@@ -173,6 +174,11 @@ function closeModal(modal) {
 
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
+
+  const submitBtn = evt.submitter;
+  //submitBtn.textContent = "Saving...";
+  setButtonText(submitBtn, true, "Save", "Saving...");
+
   api
     .editUserInfo({
       name: editModalNameInput.value,
@@ -183,8 +189,13 @@ function handleEditFormSubmit(evt) {
       profileDescription.textContent = data.about;
       closeModal(editModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      //submitBtn.textContent = "Save";
+    });
 }
+
+// set loading text for all other form submissions
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
@@ -193,7 +204,9 @@ function handleAddCardSubmit(evt) {
     link: cardLinkInput.value.trim(),
   };
 
-  disableButton(cardSubmitBtn, settings);
+  const submitBtn = evt.submitter;
+  //submitBtn.textContent = "Saving...";
+  setButtonText(submitBtn, true, "Save", "Saving...");
 
   api
     .addCard(inputValues)
@@ -206,10 +219,15 @@ function handleAddCardSubmit(evt) {
     })
     .catch(console.error);
 }
+
 // Todo - Finish avatar submission Handler
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
   const avatarUrl = avatarInput.value;
+  const submitBtn = evt.submitter;
+  //submitBtn.textContent = "Saving...";
+  setButtonText(submitBtn, true, "Save", "Saving...");
+
   api
     .editAvatarInfo({ avatar: avatarUrl })
     .then((data) => {
