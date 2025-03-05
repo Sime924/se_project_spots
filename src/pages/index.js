@@ -239,6 +239,11 @@ function handleAvatarSubmit(evt) {
 
 function handleDeleteSubmit(evt) {
   evt.preventDefault();
+
+  const submitBtn = evt.submitter;
+  //submitBtn.textContent = "Saving...";
+  setButtonText(submitBtn, true, "Delete", "Deleting...");
+
   api
     .deleteCard(selectedCardId)
     .then(() => {
