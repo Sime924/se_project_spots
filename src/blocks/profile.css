@@ -41,8 +41,11 @@
   margin-bottom: 12px;
 }
 
-.profile__pencil-icon {
+.profile__avatar-icon {
   margin-bottom: 12px;
+  margin-right: 3px;
+}
+.profile__pencil-icon {
   margin-right: 2.8px;
 }
 
