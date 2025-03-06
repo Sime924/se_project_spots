@@ -176,7 +176,6 @@ function handleEditFormSubmit(evt) {
   evt.preventDefault();
 
   const submitBtn = evt.submitter;
-  //submitBtn.textContent = "Saving...";
   setButtonText(submitBtn, true, "Save", "Saving...");
 
   api
@@ -195,8 +194,6 @@ function handleEditFormSubmit(evt) {
     });
 }
 
-// set loading text for all other form submissions
-
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
   const inputValues = {
@@ -205,7 +202,6 @@ function handleAddCardSubmit(evt) {
   };
 
   const submitBtn = evt.submitter;
-  //submitBtn.textContent = "Saving...";
   setButtonText(submitBtn, true, "Save", "Saving...");
 
   api
@@ -225,7 +221,6 @@ function handleAvatarSubmit(evt) {
   evt.preventDefault();
   const avatarUrl = avatarInput.value;
   const submitBtn = evt.submitter;
-  //submitBtn.textContent = "Saving...";
   setButtonText(submitBtn, true, "Save", "Saving...");
 
   api
@@ -241,7 +236,6 @@ function handleDeleteSubmit(evt) {
   evt.preventDefault();
 
   const submitBtn = evt.submitter;
-  //submitBtn.textContent = "Saving...";
   setButtonText(submitBtn, true, "Delete", "Deleting...");
 
   api

@@ -168,23 +168,31 @@
   opacity: 0.5;
 }
 
+#modal-avatar-container {
+  max-height: 298px;
+}
+
 #delete-modal-container {
   max-width: 630px;
 }
 
-#delete-text {
+#modal_delete-text {
   font-family: "Poppins", "Arial", Helvetica, sans-serif;
   font-size: 24px;
   line-height: 24px;
   font-weight: 500;
 }
 
-#delete-form {
+#modal_delete-form {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 20px;
   padding: 0;
+}
+
+#avatar-profile-input {
+  margin-bottom: 12px;
 }
 
 #modal-delete-close-btn {
