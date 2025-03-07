@@ -323,4 +323,37 @@
     width: 288px;
     max-width: 288px;
   }
+
+  .delete__modal-span {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+  }
+
+  #modal_delete-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #modal_delete-text {
+    font-family: "Poppins", "Arial", Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    margin-top: 0;
+    margin-left: 15px;
+  }
+
+  #modal_delete-btn {
+    max-width: 156px;
+  }
+
+  #delete-modal-container {
+    max-width: 300px;
+  }
+
+  #modal-delete-close-btn {
+    top: -45px;
+    left: 264px;
+  }
 }

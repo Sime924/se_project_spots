@@ -115,7 +115,7 @@ function handleLike(evt, id) {
   const isLiked = likeButton.classList.contains("card__like-btn_liked");
 
   api
-    .changeLikeStatus(id, !isLiked)
+    .changeLikeStatus(id, isLiked)
     .then(() => {
       likeButton.classList.toggle("card__like-btn_liked");
     })
@@ -140,7 +140,7 @@ function getCardElement(data) {
   cardImageEl.src = data.link;
   cardImageEl.alt = data.name;
 
-  if (data.likes && data.likes.length > 0) {
+  if (data.isLiked) {
     cardLikeBtn.classList.add("card__like-btn_liked");
   }
 
