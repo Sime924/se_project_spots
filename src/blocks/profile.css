@@ -22,6 +22,7 @@
   align-items: flex-end;
   justify-content: center;
   background: transparent;
+  opacity: 50%;
 }
 
 .profile__avatar-container:hover .profile__avatar-btn {
@@ -152,13 +153,6 @@
   }
 
   /* work on profile avatar btn for mobile*/
-  .profile__avatar-btn {
-    visibility: visible;
-  }
-
-  .profile__avatar-btn::after {
-    content: hidden;
-  }
 
   .profile__avatar {
     height: 80px;
@@ -183,6 +177,34 @@
 
   .profile__edit-btn {
     margin: 0 auto;
+  }
+
+  .profile__avatar-btn {
+    visibility: visible;
+    height: 23.34px;
+    width: 23.34px;
+    opacity: 5;
+    top: 52px;
+    left: 52px;
+    background-color: #212121;
+    opacity: 0.6;
+  }
+
+  .profile__avatar-btn::after {
+    content: hidden;
+    visibility: hidden;
+  }
+
+  .profile__avatar-container:hover .profile__avatar-btn {
+    cursor: pointer;
+    opacity: 0.8;
+    transition-duration: 0.3s;
+  }
+
+  .profile__avatar-icon {
+    position: absolute;
+    align-self: center;
+    margin: 0;
   }
 
   .profile__name {
