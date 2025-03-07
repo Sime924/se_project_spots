@@ -322,6 +322,5 @@ editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardForm.addEventListener("submit", handleAddCardSubmit);
 
 enableValidation(settings);
-resetValidation();
 //pass settings object to validation functions that are called
 //in this file
