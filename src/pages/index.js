@@ -5,6 +5,7 @@ import {
   enableValidation,
   settings,
   resetValidation,
+  disableButton,
 } from "../scripts/validation.js";
 
 //const initialCards = [
@@ -190,7 +191,7 @@ function handleEditFormSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      //submitBtn.textContent = "Save";
+      setButtonText(submitBtn, false);
     });
 }
 
@@ -213,7 +214,10 @@ function handleAddCardSubmit(evt) {
       evt.target.reset();
       disableButton(cardSubmitBtn, settings);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      setButtonText(submitBtn, false);
+    });
 }
 
 // Todo - Finish avatar submission Handler
@@ -229,7 +233,10 @@ function handleAvatarSubmit(evt) {
       avatarImage.src = data.avatar;
       closeModal(avatarModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      setButtonText(submitBtn, false);
+    });
 }
 
 function handleDeleteSubmit(evt) {
@@ -248,7 +255,10 @@ function handleDeleteSubmit(evt) {
       }
       closeModal(deleteModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      setButtonText(submitBtn, false, "Delete", "Deleting...");
+    });
 }
 
 function handleDeleteCard(cardElement, cardId) {
